@@ -170,14 +170,14 @@ export function Sidebar({
       <div className="lg:hidden sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b border-zinc-800">
         <div className="flex items-center justify-between p-4">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          {/* <div className="flex-shrink-0">
             <h1 className="text-lg md:text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               SocialStream
             </h1>
-          </div>
+          </div> */}
 
           {/* Mobile Search Bar */}
-          <div className="flex-1 mx-4 max-w-md">
+          <div className="flex-1 ">
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <svg
@@ -223,7 +223,7 @@ export function Sidebar({
           </div>
 
           {/* User Profile - Mobile */}
-          <div className="flex items-center space-x-2">
+          {/* <div className="flex items-center space-x-2">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
               {user?.avatarUrl ? (
                 <img
@@ -240,11 +240,11 @@ export function Sidebar({
             <div className="hidden md:block">
               <SignOutButton />
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom Navigation */}
-        <div className="flex items-center justify-around px-4 py-2 bg-zinc-900/50">
+        <div className="flex items-center justify-around px-4  bg-zinc-900/50">
           {navItems.map((item) => (
             <button
               key={item.id}
