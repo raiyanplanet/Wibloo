@@ -17,7 +17,10 @@ export function Sidebar({
   setSearchQuery,
 }: SidebarProps) {
   const user = useQuery(api.users.getCurrentUser);
-  const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+  const clearSearch = () => {
+    setSearchQuery("");
+  };
 
   const navItems = [
     {
@@ -49,10 +52,56 @@ export function Sidebar({
       <div className="hidden lg:block w-64 h-screen sticky top-0 p-4 border-r border-zinc-800">
         <div className="flex flex-col h-full">
           {/* Logo */}
-          <div className="mb-8">
+          <div className="mb-6">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              SocialStream
+              Widloo
             </h1>
+          </div>
+
+          {/* Search Bar */}
+          <div className="mb-6">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg
+                  className="h-4 w-4 text-zinc-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search Widloo"
+                className="block w-full pl-10 pr-10 py-2.5 bg-zinc-900 border border-zinc-700 rounded-full text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-sm"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={clearSearch}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center">
+                  <svg
+                    className="h-4 w-4 text-zinc-400 hover:text-white transition-colors"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Navigation */}
@@ -119,16 +168,62 @@ export function Sidebar({
 
       {/* Mobile/Tablet Top Navigation */}
       <div className="lg:hidden sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b border-zinc-800">
-        <div className="flex items-center justify-between p-4">
+        <div className="flex max-md:flex-col items-center justify-between p-4">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          {/* <div className="flex-shrink-0">
             <h1 className="text-lg md:text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              SocialStream
+              Wibloo
             </h1>
+          </div> */}
+
+          {/* Mobile Search Bar */}
+          <div className="flex-1  w-full">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg
+                  className="h-4 w-4 text-zinc-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search"
+                className="block w-full pl-10 pr-8 py-2 bg-zinc-900 border border-zinc-700 rounded-full text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-sm"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={clearSearch}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center">
+                  <svg
+                    className="h-4 w-4 text-zinc-400 hover:text-white transition-colors"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              )}
+            </div>
           </div>
 
           {/* User Profile - Mobile */}
-          <div className="flex items-center space-x-2">
+          {/* <div className="flex items-center space-x-2">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
               {user?.avatarUrl ? (
                 <img
@@ -145,11 +240,11 @@ export function Sidebar({
             <div className="hidden md:block">
               <SignOutButton />
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom Navigation */}
-        <div className="flex items-center justify-around px-4 py-2 bg-zinc-900/50">
+        <div className="flex items-center justify-around bg-zinc-900/50">
           {navItems.map((item) => (
             <button
               key={item.id}
