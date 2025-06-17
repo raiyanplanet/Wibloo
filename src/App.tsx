@@ -90,7 +90,7 @@ export default function App() {
             </div>
 
             {/* Mobile Search Bar - Visible only on mobile */}
-            <div className="lg:hidden sticky top-0 z-10 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800 p-4 flex-shrink-0">
+            <div className="lg:hidden max-md:hidden sticky top-0 z-10 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800 p-4 flex-shrink-0">
               <form onSubmit={handleSearchSubmit} className="relative">
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
